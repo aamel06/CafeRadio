@@ -1,0 +1,28 @@
+:root {
+  font-family: var(--font1), Helvetica, Arial, sans-serif;
+  background-color: var(--BGcolour);
+}
+
+html, body {
+  overflow: hidden;
+  margin: 0;
+}
+
+.highlight{
+  color: var(--colour2);
+}
+
+h1{ /*  *ALL  */
+  color: var(--colour1);
+  text-align: center;
+}
+
+#navbar{
+    width: 80%;
+    height: 40px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+

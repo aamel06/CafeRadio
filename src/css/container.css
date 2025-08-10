@@ -1,0 +1,300 @@
+*{
+    font-family: var(--font1), Helvetica, Arial, sans-serif;
+    color: var(--colour1);
+    letter-spacing: 2px;
+}
+
+.panel, .draggablepanel{
+    margin: 10px;
+    position: fixed;
+    background-color: var(--BGcolour2);
+    border-radius: 0.6rem;
+    border: 1px solid var(--colour1D);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    /* left: 0; */
+    bottom: 0;
+}
+
+button{
+    font-size: 1rem;
+    font-weight: 200;
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    transition: transform 0.5s ease;
+
+}
+
+li {
+    text-align: left;
+    list-style: none;
+    list-style-position: inside;
+
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background: var(--BGcolour2L);
+  border-radius: 100000000px; 
+  height: 0.5rem;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+   -webkit-appearance: none;
+   appearance: none;
+   margin-top: -1px;
+   background-color: var(--colour1);
+   color: var(--colour1D);
+   height: 0.6rem;
+   width: 0.6rem;   
+   border-radius: 1000px; 
+}
+
+h3,p, label{
+    font-weight: 300;
+    text-align: center;
+
+}
+
+/* label{
+        padding: 10px;
+} */
+
+select{
+    background-color: transparent;
+    border: none;
+}
+
+button:hover{
+    filter: drop-shadow(0 0 0.5rem var(--colour1));
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+button:active{
+    opacity: 70%;
+}
+/* 
+::-webkit-scrollbar-track{
+    background: white;
+}
+
+::-webkit-scrollbar-thumb{
+    background: white;
+} */
+
+form{
+    margin: 0 auto;
+    display: grid;
+    max-width: 60%;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+input[type="text"], input[type='submit']{
+    background-color: var(--BGcolour2L);
+    border: 1px solid var(--colour1D);
+    border-radius: 10px;
+    font-size: 0.8rem;
+    text-align: center;
+    height: 1.5rem;
+}
+
+/* DRAGGABLE PANEL CSS ---------------*/
+.draggablepanel:hover{
+    transition: max-height 1s ease-out;
+}
+.draggablepanel .paneltopbar {
+    padding: 1px;
+    background-color: var(--BGcolour2L);
+    border-bottom: 1px solid var(--colour1D);
+    text-align: right;
+    /* position: absolute; */
+
+    animation: topbar 0.3s linear;
+}
+
+.draggablepanel .paneltopbar:hover{
+    cursor: grab;
+}
+/* --------------- */
+
+/* NAVBAR CSS ---------------*/
+#navbar{
+    overflow: hidden;
+    top: 0 !important;
+}
+#navbar .options{
+    justify-content: space-between;
+    display: flex;
+}
+/* --------------- */
+
+/* CLOCK CSS ---------------*/
+
+#clockpanel h2{
+    font-weight: 100;
+    margin: 0 auto;
+    font-size: 5rem;
+    padding: 10px;
+    user-select: none;
+    filter: drop-shadow(0 0 0.5rem var(--colour1D));
+}
+/* --------------- */
+
+/* RADIOSELECT CSS ---------------*/
+#radioselectpanel{
+    /* left: 0;
+    bottom: 0; */
+    width: 450px;
+    min-height: 300px;
+}
+#stations{
+    max-height: 150px;
+    display: grid;
+    gap: 10px;
+    overflow: auto;
+}
+#stations button{
+    text-align: left;
+    margin-right: 10px;
+    border-radius: 0.5rem;
+}
+#stations button:hover{
+    filter: drop-shadow(0 0 0 transparent);
+    background-color: var(--BGcolour2L);
+}
+
+
+
+
+/* --------------- */
+
+/* POMODORO CSS ---------------*/
+#pomodoropanel{
+    width: 320px;
+}
+
+#pomodoropanel .val{
+    border: 1px solid var(--colour1D);
+    background-color: var(--BGcolour2L);
+    border-radius: 5px;
+    min-width: 50px;
+    max-width: 50px;
+}
+#pomodoropanel .action{
+    width: 100%;
+    text-align: center;
+}
+.selection{
+    display: flex;
+    padding-left: 10px;
+
+}
+.selection .right{
+    display: flex;
+    margin-left: auto;
+}
+
+#timer h2{
+    font-weight: 100;
+    font-size: 4rem;
+    text-align: center;
+    margin: 0;
+    filter: drop-shadow(0 0 0.5rem var(--colour1));
+
+}
+/* --------------- */
+
+/* MIXER CSS ---------------*/
+#mixerpanel input{
+    background: transparent;
+}
+
+.sliders{
+    justify-content: flex-end;
+    display: grid;
+    padding: 10px;
+    line-height: 2.5rem;
+}
+
+.inputrow{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.volDisplay{
+    display: none;
+}
+/* --------------- */
+
+/* WALLPAPERSELECT CSS ---------------*/
+#wallpaper{
+    max-width: 400px;
+}
+#wpScroll{
+    overflow: auto;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+
+}
+
+#wpScroll .preview{
+    border: 1px solid var(--colour1D);
+    min-width: 220px;
+    max-width: 220px;
+    min-height: 124px;
+    max-height: 124px;
+}
+/* --------------- */
+
+/* TODOLIST CSS ---------------*/
+#todolistpanel{
+    width: 350px;
+}
+
+#tasks{
+    min-width: 80%;
+    max-width: 80%;
+    margin: 0 auto;
+    
+    margin-bottom: 10px;
+    overflow: auto;
+}
+
+#task{
+    border: 1px solid var(--colour1D);
+    border-radius: 1rem;
+    background-color: var(--BGcolour2L);
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+#addtask{
+    text-align: center;
+}
+
+#addtask input[type='text']{
+    width: 50%;
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+/* --------------- */
+
+@keyframes topbar {
+    from {
+        opacity: 0%;
+    }
+    to{
+        opacity: 100%;
+    }
+}
