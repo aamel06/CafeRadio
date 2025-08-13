@@ -28,7 +28,7 @@ function AddRadio(){
     }
 
     return(
-        <div style={{borderTop: '1px solid var(--colour1D)'}}>
+        <div id='addradiopanel' style={{borderTop: '1px solid var(--colour1D)'}}>
             <p>Add Radio Station</p>
                 <form onSubmit={addedRadio} action=''>
                     <input ref={yturl} type='text' placeholder='Youtube URL' required/>
@@ -57,14 +57,7 @@ function RadioSelect (){
     const { radioState, setRadio } = useContext(RadioContext);
 
     return(
-        <DraggableContainer idName='radioselectpanel' style={{ display: 'none' }}>
-
-            {/* <label htmlFor='radiovol'>Radio Volume: </label>
-            <input onChange={(e) =>{
-                let value = parseInt(e.target.value)
-                setRadio(prev => ({...prev, radiovolume : value}))
-            }} type='range'id='radiovol' min='0' max='100' defaultValue={radioState.radiovolume}/> */}
-            
+        <DraggableContainer idName='radioselectpanel' style={{ display: 'none' }}>            
             <div> 
                 <label htmlFor='radiovol'>Radio Volume: </label>
                 <input 

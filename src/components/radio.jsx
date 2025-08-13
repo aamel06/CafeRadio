@@ -20,17 +20,19 @@ function Radio (){
 
     return(
         <div>
-            {/* <YouTube
+            <YouTube
                 videoId={radioState.radiourl}
                 opts={{
                     height:'0',
                     width:'0',
                     playerVars: {
                         autoplay: 1,
+                        loop: 1,
+                        playlist: radioState.radiourl,
                     },
                 }}
                 onReady={onReady}
-            /> */}
+            />
         </div>
     )
 }

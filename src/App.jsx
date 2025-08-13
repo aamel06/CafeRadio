@@ -18,7 +18,7 @@ export const ToDoListContext = createContext();
 function App() {
   const [panelState, setPanelState] = useState({  // Context for the state of all panels in the website
     activepanel : null,
-    wallpaperSRC : 'src/assets/cityroofrain.mp4',
+    wallpaperSRC : '/src/assets/storerainnight.mp4',
     radioselectpanel : 0, //1 = open but minimised, 2 = open and visible, 0 = closed
     mixerpanel : 0,
     pomodoropanel : 0,
@@ -44,11 +44,11 @@ function App() {
 
   const videoRef = useRef(null)
 
+  const [timerActive, setTimerActive] = useState(false);
+
   useEffect(() =>{
     videoRef.current?.load();
-  }, [panelState.wallpaperSRC])
-
-  
+  }, [panelState.wallpaperSRC])  
 
   return (
     // <StrictMode>

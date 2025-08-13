@@ -16,14 +16,15 @@
     bottom: 0;
 }
 
-button{
+button, a{
     font-size: 1rem;
     font-weight: 200;
     background-color: transparent;
     border: none;
     padding: 10px;
     transition: transform 0.5s ease;
-
+    user-select: none;
+    text-decoration: none;
 }
 
 li {
@@ -63,32 +64,20 @@ h3,p, label{
 
 }
 
-/* label{
-        padding: 10px;
-} */
-
 select{
     background-color: transparent;
     border: none;
 }
 
-button:hover{
+button:hover, a:hover{
     filter: drop-shadow(0 0 0.5rem var(--colour1));
     cursor: pointer;
     transform: scale(1.05);
 }
 
-button:active{
+button:active, a:active{
     opacity: 70%;
 }
-/* 
-::-webkit-scrollbar-track{
-    background: white;
-}
-
-::-webkit-scrollbar-thumb{
-    background: white;
-} */
 
 form{
     margin: 0 auto;
@@ -130,10 +119,16 @@ input[type="text"], input[type='submit']{
 #navbar{
     overflow: hidden;
     top: 0 !important;
+    
+    width: fit-content;
+    height: 40px;
+    left: 0;
+    right: 0;
+    margin: 10px auto;
 }
 #navbar .options{
     justify-content: space-between;
-    display: flex;
+    /* display: flex; */
 }
 /* --------------- */
 
@@ -151,13 +146,11 @@ input[type="text"], input[type='submit']{
 
 /* RADIOSELECT CSS ---------------*/
 #radioselectpanel{
-    /* left: 0;
-    bottom: 0; */
     width: 450px;
-    min-height: 300px;
+    /* min-height: 430px; */
 }
 #stations{
-    max-height: 150px;
+    max-height: 250px;
     display: grid;
     gap: 10px;
     overflow: auto;
@@ -172,9 +165,10 @@ input[type="text"], input[type='submit']{
     background-color: var(--BGcolour2L);
 }
 
-
-
-
+#addradiopanel{
+    position: absolute;
+    z-index: 2;
+}
 /* --------------- */
 
 /* POMODORO CSS ---------------*/
@@ -236,8 +230,8 @@ input[type="text"], input[type='submit']{
 }
 /* --------------- */
 
-/* WALLPAPERSELECT CSS ---------------*/
-#wallpaper{
+/* BOTTOMNAVBAR CSS ---------------*/
+#bottomnavbar{
     max-width: 400px;
 }
 #wpScroll{
@@ -254,6 +248,12 @@ input[type="text"], input[type='submit']{
     max-width: 220px;
     min-height: 124px;
     max-height: 124px;
+}
+
+#settings{
+    display: grid;
+    justify-content: flex-start;
+    margin: 0 auto;
 }
 /* --------------- */
 

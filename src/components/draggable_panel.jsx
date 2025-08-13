@@ -39,7 +39,7 @@ function DraggableContainer(props){
             onMouseLeave={() => setTopBar(false)}
             onClick={() => setPanelState(prev => ({ ...prev, activepanel : props.idName}))}
             style={
-                { zIndex: panelState.activepanel === props.idName ? 2 : 1,
+                { zIndex: panelState.activepanel === props.idName ? 5 : 1,
                  display: panelState[props.idName] !== 1 ? 'block' : 'none'}
                 }>
             {

@@ -47,6 +47,8 @@ function ValueSelect ({
 }
 
 function Settings({
+    alarmVolume,
+    setAlVol,
     pomActive,
     setpomActive,
     pomTime,
@@ -61,7 +63,7 @@ function Settings({
             <ValueSelect 
             idName='work'
             text='Work Time (minutes)' 
-            step='1' 
+            step='5' 
             maxVal='200'
             pomProps={pomProps}
             setpomProps={setpomProps}
@@ -69,7 +71,7 @@ function Settings({
             <ValueSelect 
             idName='break'
             text='Break Time (minutes)' 
-            step='1' 
+            step='5' 
             maxVal='60'
             pomProps={pomProps}
             setpomProps={setpomProps}
@@ -82,61 +84,81 @@ function Settings({
             pomProps={pomProps}
             setpomProps={setpomProps}
             />
+            <p>Alarm Volume: <input type='range' min={0} max={100} value={alarmVolume} onChange={(e) => {
+                    let value = parseInt(e.target.value);
+                    setAlVol(value)
+                    }}></input></p>
             <div className='action'><button onClick= {() => {setpomActive(true);}}>Start</button></div>
         </div>
     )
     }
 
-function Timer({    
+function Timer({   
+    alarmVolume, 
     pomActive,
     setpomActive,
     pomProps,
     setpomProps
 }){
     const [pomPhase, setpomPhase] = useState('Work')
-    const rounds = pomProps.rounds;
     const [round, setRound] = useState(1)
-    const timeMultiplier = 1000; //Default 60000
-    const [startTime, setStartTime] = useState()
+    const [key, setKey] = useState(0);
+    const timeMultiplier = 60000; //Default 60000
+    const [startTime, setStartTime] = useState(Date.now() + (pomProps.work * timeMultiplier))
     const alarm = new Audio('/src/sounds/alarm.mp3');
+    alarm.volume = alarmVolume / 100;
+    const timerRef = useRef(null);
+    const [pauseText, setPauseText] = useState('Pause')
     const renderer = ({ minutes, seconds, completed }) => { 
-        return <h2>{zeroPad(minutes)}:{zeroPad(seconds)}</h2>;
+        return <h2 style={{fontSize:'6rem', fontVariantNumeric:'tabular-nums', userSelect:'none'}}>
+        {zeroPad(minutes)}:{zeroPad(seconds)}
+        </h2>;
     };
 
-    useEffect(() => {
-        if (pomPhase == 'Work') {
-            setStartTime(Date.now() + pomProps.work * timeMultiplier);
-        } else if (pomPhase == 'Break') {
-            setStartTime(Date.now() + pomProps.break * timeMultiplier);
-        }
-    }, [pomPhase, pomProps.work, pomProps.break]);
-
     const completed = () => {
-        console.log('done')
-        if (pomPhase == 'Work' && round <= rounds){
-            setpomPhase('Break');
-        } else if (pomPhase == 'Break'){
-            setpomPhase('Work');
-            setRound(r => r + 1);
-        } else {
-            console.log('Finished!')
-        }
         alarm.play();
+        setTimeout(() => {
+            if (pomPhase == 'Work' && round < pomProps.rounds){
+                setpomPhase('Break')
+                setStartTime(Date.now() + pomProps.break * timeMultiplier);
+                setKey(k => k + 1);
+
+            } else if (pomPhase == 'Break'){
+                setpomPhase('Work');
+                setStartTime(Date.now() + pomProps.work * timeMultiplier);
+                setRound(r => r + 1);
+                setKey(k => k + 1);
+            } else {
+                console.log('Finished!')
+            }
+        }, 1000)
+
+
     }
 
     return(
         <div id='timer'>
-                <h3>{pomPhase} {round}/{rounds}</h3>
+                <h3>{pomPhase} {round}/{pomProps.rounds}</h3>
                 <Countdown
                 date={startTime}
                 renderer={renderer}
                 onComplete={completed}
-                key={pomPhase}
+                key={key}
+                ref={timerRef}
                 />
                 
                 <div className='action'>
                 {/* <button>Pause</button> */}
+                <button onClick={() => {
+                    const timer = timerRef.current.getApi()
+                    if (timer.isPaused()){
+                        timer.start()
+                        setPauseText('Pause')
+                    }else{timer.pause(); setPauseText('Unpause')}
+
+                    }}>{pauseText}</button>
                 <button onClick={() => {setpomActive(false)}}>Cancel</button>
+                
                 </div>
         </div>
     )
@@ -145,6 +167,7 @@ function Timer({
 function Pomodoro (){
     const {panelState} = useContext(PanelContext);
 
+    const [alarmVolume, setAlVol] = useState(75);
     const [pomActive, setpomActive] = useState(false)
     const [pomTime, setpomTime] = useState(0)
     const [pomProps, setpomProps] = useState({
@@ -156,6 +179,8 @@ function Pomodoro (){
     return(
         <DraggableContainer idName='pomodoropanel'>
             {!pomActive && <Settings 
+            alarmVolume={alarmVolume}
+            setAlVol={setAlVol}
             pomActive={pomActive}
             setpomActive={setpomActive}
             pomTime={pomTime}
@@ -164,6 +189,7 @@ function Pomodoro (){
             setpomProps={setpomProps}
             />}
             {pomActive && <Timer 
+            alarmVolume={alarmVolume}
             pomActive={pomActive}
             setpomActive={setpomActive}
             pomTime={pomTime}

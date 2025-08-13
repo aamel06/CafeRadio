@@ -6,6 +6,8 @@ import { PanelContext} from "../App.jsx";
 function NavButton ({text, panel}){
   const { panelState, setPanelState } = useContext(PanelContext);
   
+
+
   return(
     <button 
       onClick={() => {
@@ -28,9 +30,7 @@ function Navbar (){
                 <NavButton text='📝 To Do List' panel='todolistpanel'/>
                 <NavButton text='⏲️ Pomodoro Timer' panel='pomodoropanel'/>
                 <NavButton text='🕓 Clock' panel='clockpanel'/>
-                <button
-                onClick={() =>{document.documentElement.requestFullscreen()}}
-                >⛶ Fullscreen</button>
+                
             </div>
         </div>
     )
