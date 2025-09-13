@@ -27,12 +27,12 @@ function BottomNavbar({pauseVideo, setpauseVideo}){
     <div id='wallpaper'>
       <h3>Change Wallpaper</h3>
         <div id='wpScroll'>
-          <WallpaperPreview previewSRC='/src/assets/previews/cityroofrain.jpg' videoSRC='/src/assets/cityroofrain.mp4'/>
-          <WallpaperPreview previewSRC='/src/assets/previews/forestinsiderain.jpg' videoSRC='/src/assets/forestinsiderain.mp4'/>
-          <WallpaperPreview previewSRC='/src/assets/previews/firewindowinside.jpg' videoSRC='/src/assets/firewindowinside.mp4'/>
-          <WallpaperPreview previewSRC='/src/assets/previews/nightcatcity.jpg' videoSRC='/src/assets/nightcatcity.mp4'/>
-          <WallpaperPreview previewSRC='/src/assets/previews/storerainnight.jpg' videoSRC='/src/assets/storerainnight.mp4'/>
-          <WallpaperPreview previewSRC='/src/assets/previews/purplecityinside.jpg' videoSRC='/src/assets/purplecityinside.mp4'/>
+          <WallpaperPreview previewSRC='/static/previews/cityroofrain.jpg' videoSRC='/static/videos/cityroofrain.mp4'/>
+          <WallpaperPreview previewSRC='/static/previews/forestinsiderain.jpg' videoSRC='/static/videos/forestinsiderain.mp4'/>
+          <WallpaperPreview previewSRC='/static/previews/firewindowinside.jpg' videoSRC='/static/videos/firewindowinside.mp4'/>
+          <WallpaperPreview previewSRC='/static/previews/nightcatcity.jpg' videoSRC='/static/videos/nightcatcity.mp4'/>
+          <WallpaperPreview previewSRC='/static/previews/storerainnight.jpg' videoSRC='/static/videos/storerainnight.mp4'/>
+          <WallpaperPreview previewSRC='/static/previews/purplecityinside.jpg' videoSRC='/static/videos/purplecityinside.mp4'/>
         </div>
     </div>}
 

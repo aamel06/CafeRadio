@@ -1,6 +1,5 @@
-import { useContext, useState, useRef, useEffect} from 'react';
-import { PanelContext } from "../App";
-import Mixer from "./mixer";
+import { useRef, useEffect} from 'react';
+
 
 function AudioPlayer({vol, source, master}){
     const meRef = useRef(null)
@@ -47,11 +46,11 @@ function MixerAudio ({
 }){
 
 
-    const rainSRC = '/src/sounds/rain.mp3'
-    const fireplaceSRC = '/src/sounds/fireplace.mp3'
-    const stormSRC = '/src/sounds/storm.mp3'
-    const citySRC = '/src/sounds/city.mp3'
-    const forestSRC = '/src/sounds/forest.mp3'
+    const rainSRC = '/static/previews/sounds/rain.mp3'
+    const fireplaceSRC = '/static/previews/sounds/fireplace.mp3'
+    const stormSRC = '/static/previews/sounds/storm.mp3'
+    const citySRC = '/static/previews/sounds/city.mp3'
+    const forestSRC = '/static/previews/sounds/forest.mp3'
     
     return(
         <>

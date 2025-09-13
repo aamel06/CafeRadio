@@ -1,4 +1,4 @@
-import { useState , useEffect, useContext, useRef} from 'react';
+import { useState, useContext, useRef} from 'react';
 import DraggableContainer from './draggable_panel';
 import { PanelContext } from "../App.jsx";
 import MixerAudio from './mixeraudio.jsx';
@@ -37,7 +37,7 @@ function Mixer({
     const [forest, setForest] = useState(0);
 
     function matchWallpaper(){
-        let wallpaper =  panelState.wallpaperSRC.toString().substring(12)
+        let wallpaper =  panelState.wallpaperSRC.toString().substring(15)
         console.log(wallpaper)
         if (wallpaper == 'cityroofrain.mp4'){
             setRain(0.75);
