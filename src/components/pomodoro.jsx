@@ -1,6 +1,5 @@
-import { PanelContext } from '../App';
 import DraggableContainer from './draggable_panel';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import Countdown, { zeroPad } from 'react-countdown';
 
 function ValueSelect ({
@@ -20,7 +19,7 @@ function ValueSelect ({
         if (value < maxVal){
             const newValue = value + step;
             setValue(newValue);
-            setpomProps(prev => ({ ...prev, [idName]: newValue })); // sync with parent
+            setpomProps(prev => ({ ...prev, [idName]: newValue }));
         }
     }
 
@@ -28,7 +27,7 @@ function ValueSelect ({
         if (value > 0){
             const newValue = value - step;
             setValue(newValue);
-            setpomProps(prev => ({ ...prev, [idName]: newValue })); // sync with parent
+            setpomProps(prev => ({ ...prev, [idName]: newValue }));
             
         }
     }
@@ -49,10 +48,7 @@ function ValueSelect ({
 function Settings({
     alarmVolume,
     setAlVol,
-    pomActive,
     setpomActive,
-    pomTime,
-    setpomTime,
     pomProps,
     setpomProps
 
@@ -84,10 +80,23 @@ function Settings({
             pomProps={pomProps}
             setpomProps={setpomProps}
             />
-            <p>Alarm Volume: <input type='range' min={0} max={100} value={alarmVolume} onChange={(e) => {
+            <p>Alarm Volume: 
+
+                
+                <input type='range' min={0} max={100} value={alarmVolume} onChange={(e) => {
                     let value = parseInt(e.target.value);
-                    setAlVol(value)
-                    }}></input></p>
+                    setAlVol(value)}}
+                    style={{paddingLeft: '2px', paddingRight: '2px'}}
+                    ></input>
+                                <button 
+                    style={{padding:'0px'}}
+                    onClick={() => {
+                    const alarm = new Audio('/src/sounds/alarm.mp3');
+                    alarm.volume = alarmVolume / 100
+                    alarm.play()
+                }}>🔊</button>
+            </p>
+                
             <div className='action'><button onClick= {() => {setpomActive(true);}}>Start</button></div>
         </div>
     )
@@ -95,10 +104,8 @@ function Settings({
 
 function Timer({   
     alarmVolume, 
-    pomActive,
     setpomActive,
     pomProps,
-    setpomProps
 }){
     const [pomPhase, setpomPhase] = useState('Work')
     const [round, setRound] = useState(1)
@@ -106,7 +113,7 @@ function Timer({
     const timeMultiplier = 60000; //Default 60000
     const [startTime, setStartTime] = useState(Date.now() + (pomProps.work * timeMultiplier))
     const alarm = new Audio('/src/sounds/alarm.mp3');
-    alarm.volume = alarmVolume / 100;
+        alarm.volume = alarmVolume / 100;
     const timerRef = useRef(null);
     const [pauseText, setPauseText] = useState('Pause')
     const renderer = ({ minutes, seconds, completed }) => { 
@@ -165,11 +172,8 @@ function Timer({
   }
 
 function Pomodoro (){
-    const {panelState} = useContext(PanelContext);
-
     const [alarmVolume, setAlVol] = useState(75);
     const [pomActive, setpomActive] = useState(false)
-    const [pomTime, setpomTime] = useState(0)
     const [pomProps, setpomProps] = useState({
         work : 0,
         break : 0,
@@ -183,19 +187,13 @@ function Pomodoro (){
             setAlVol={setAlVol}
             pomActive={pomActive}
             setpomActive={setpomActive}
-            pomTime={pomTime}
-            setpomTime={setpomTime}
             pomProps={pomProps}
             setpomProps={setpomProps}
             />}
             {pomActive && <Timer 
             alarmVolume={alarmVolume}
-            pomActive={pomActive}
             setpomActive={setpomActive}
-            pomTime={pomTime}
-            setpomTime={setpomTime}
             pomProps={pomProps}
-            setpomProps={setpomProps}
             />}
         </DraggableContainer>
     )

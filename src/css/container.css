@@ -58,11 +58,32 @@ input[type="range"]::-webkit-slider-thumb {
    border-radius: 1000px; 
 }
 
+input[type="color"] {
+  padding: 0;
+  width: 20px;
+  height: 15px;
+  margin-left: 10px;
+}
+
+input[type="color"]::-moz-color-swatch {
+  border: none;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border-radius: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+}
+
 h3,p, label{
     font-weight: 300;
     text-align: center;
-
 }
+
+h3{filter: drop-shadow(0 0 1rem var(--colour1))}
 
 select{
     background-color: transparent;
@@ -140,20 +161,22 @@ input[type="text"], input[type='submit']{
     font-size: 5rem;
     padding: 10px;
     user-select: none;
-    filter: drop-shadow(0 0 0.5rem var(--colour1D));
+    filter: drop-shadow(0 0 0.5rem var(--colour1));
 }
 /* --------------- */
 
 /* RADIOSELECT CSS ---------------*/
 #radioselectpanel{
     width: 450px;
-    /* min-height: 430px; */
+    /* max-height: 400px; */
+    min-height: 400px;
 }
 #stations{
-    max-height: 250px;
+    max-height: 200px;
     display: grid;
     gap: 10px;
-    overflow: auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 #stations button{
     text-align: left;
@@ -164,12 +187,6 @@ input[type="text"], input[type='submit']{
     filter: drop-shadow(0 0 0 transparent);
     background-color: var(--BGcolour2L);
 }
-
-#addradiopanel{
-    position: absolute;
-    z-index: 2;
-}
-/* --------------- */
 
 /* POMODORO CSS ---------------*/
 #pomodoropanel{
@@ -232,10 +249,11 @@ input[type="text"], input[type='submit']{
 
 /* BOTTOMNAVBAR CSS ---------------*/
 #bottomnavbar{
-    max-width: 400px;
+    max-width: 398px;
 }
 #wpScroll{
-    overflow: auto;
+    overflow-y: hidden;
+    overflow-x: auto;
     display: grid;
     grid-template-columns: auto auto;
     gap: 10px;
@@ -250,10 +268,9 @@ input[type="text"], input[type='submit']{
     max-height: 124px;
 }
 
-#settings{
-    display: grid;
-    justify-content: flex-start;
-    margin: 0 auto;
+#settings .setting{
+    margin-left: 10px;
+    padding: 10px;
 }
 /* --------------- */
 

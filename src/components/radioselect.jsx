@@ -58,7 +58,11 @@ function RadioSelect (){
 
     return(
         <DraggableContainer idName='radioselectpanel' style={{ display: 'none' }}>            
-            <div> 
+            <h3>Select Radio Station</h3>
+            <p>Currently Playing: {radioState.radioname}</p>
+            <div
+                style={{textAlign:'center'}}
+            > 
                 <label htmlFor='radiovol'>Radio Volume: </label>
                 <input 
                     type='range' 
@@ -70,10 +74,6 @@ function RadioSelect (){
                         let value = parseInt(e.target.value)
                         setRadio(prev => ({...prev, radiovolume : value}))}}/>
             </div>
-
-            <h3>Select Radio Station</h3>
-            <p>Currently Playing: {radioState.radioname}</p>
-
             <div id='stations'>
                 {radioState.stations.map(([emoji, text, url], index) => (
                 <RadioButton emoji={emoji} text={text} url={url} key={index} />

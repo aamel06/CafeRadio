@@ -17,9 +17,10 @@ function WallpaperPreview({previewSRC, videoSRC}){
   )
 }
 
-function BottomNavbar(){
+function BottomNavbar({pauseVideo, setpauseVideo}){
   const [wallpaperState, setWallpaperState] = useState(false)
   const [settingsState, setSettingsState] = useState(false)
+  const [pauseState, setpauseState] = useState('❚❚')
   return(
   <div className='panel' id='bottomnavbar' style={{right:0, bottom:0, left:null,  overflow: 'hidden'}}> 
     { wallpaperState &&
@@ -32,19 +33,36 @@ function BottomNavbar(){
           <WallpaperPreview previewSRC='/src/assets/previews/nightcatcity.jpg' videoSRC='/src/assets/nightcatcity.mp4'/>
           <WallpaperPreview previewSRC='/src/assets/previews/storerainnight.jpg' videoSRC='/src/assets/storerainnight.mp4'/>
           <WallpaperPreview previewSRC='/src/assets/previews/purplecityinside.jpg' videoSRC='/src/assets/purplecityinside.mp4'/>
-          <WallpaperPreview previewSRC='/src/assets/previews/blueliquidmoving.jpg' videoSRC='/src/assets/blueliquidmoving.mp4'/>
-
         </div>
     </div>}
 
     { settingsState && <div id='settings'>
       <h3>Settings</h3>
-        <label for='panelBG'>Panel Background Colour:  <input name='panelBG' type='color'></input></label>
-        <label for='panelText'>Panel Text Colour: <input name='panelText' type='color'></input></label>
-        <button>⏸ Pause Wallpaper</button>
-        <button
-          onClick={() =>{document.documentElement.requestFullscreen()}}
-        >⛶ Fullscreen</button>
+        <div className="setting">
+          <button
+          style={{padding:'0px'}}
+          onClick={() => {
+            if (pauseVideo){
+              setpauseVideo(false);
+              setpauseState('❚❚')
+            } else{
+              setpauseVideo(true);
+              setpauseState('▶')
+            }
+          }}
+          >{pauseState} Pause Wallpaper</button>
+        </div>
+        <div className="setting">
+          <button
+          style={{padding:'0px'}}
+          onClick={() =>{
+            if (screen.width == window.innerWidth && screen.height == window.innerHeight) {
+                document.exitFullscreen()
+            } else{document.documentElement.requestFullscreen()}
+          }}
+          >⛶ Fullscreen</button>
+        </div>
+
     </div>}
 
 
@@ -57,7 +75,7 @@ function BottomNavbar(){
               setWallpaperState(true)
             }
             setSettingsState(false)
-      }}>🗂️ Wallpaper</button>
+      }}>🗂️ Wallpapers</button>
 
       <button onClick={()=>{
             if (settingsState){

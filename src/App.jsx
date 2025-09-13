@@ -39,21 +39,40 @@ function App() {
       ['🚫', 'No Radio', '']]
   });
 
-  const [todolistState, setToDoList] = useState([
-  ]);
-
-  const videoRef = useRef(null)
-
-  const [timerActive, setTimerActive] = useState(false);
+  const [todolistState, setToDoList] = useState([]);
+  const videoRef = useRef(null);
+  const [pauseVideo, setpauseVideo] = useState(false);
 
   useEffect(() =>{
     videoRef.current?.load();
   }, [panelState.wallpaperSRC])  
 
+  useEffect(() => {
+    if (pauseVideo){
+      videoRef.current?.pause();
+    } else{
+      videoRef.current?.play();
+    }
+  }, [pauseVideo])
+
+  addEventListener('mousemove',(e) => {
+    if (timerActive){
+      
+    }
+  });
+
   return (
     // <StrictMode>
     <PanelContext.Provider value={{ panelState, setPanelState }}>
-      <video id='background' ref={videoRef} autoPlay muted loop >
+      <video 
+        id='background' 
+        ref={videoRef} 
+        autoPlay 
+        muted 
+        loop
+        onContextMenu={() => {return false}}
+        playsinline
+        >
         <source src={panelState.wallpaperSRC}/>
       </video>
       
@@ -67,7 +86,7 @@ function App() {
         {panelState.pomodoropanel > 0 && <Pomodoro/>}
         {panelState.mixerpanel > 0 && <Mixer/>}
         {panelState.navbarspanel > 0 && <Navbar/>}
-        {panelState.navbarspanel > 0 && <BottomNavbar/>}
+        {panelState.navbarspanel > 0 && <BottomNavbar pauseVideo = {pauseVideo} setpauseVideo={setpauseVideo}/>}
         <Radio/>
       </RadioContext.Provider>
 

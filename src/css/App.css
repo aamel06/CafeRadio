@@ -19,4 +19,5 @@
   object-fit: cover;
   will-change: opacity;
   user-select: none;
+  pointer-events: none;
 }
