@@ -46,11 +46,11 @@ function MixerAudio ({
 }){
 
 
-    const rainSRC = '/static/previews/sounds/rain.mp3'
-    const fireplaceSRC = '/static/previews/sounds/fireplace.mp3'
-    const stormSRC = '/static/previews/sounds/storm.mp3'
-    const citySRC = '/static/previews/sounds/city.mp3'
-    const forestSRC = '/static/previews/sounds/forest.mp3'
+    const rainSRC = '/static/sounds/rain.mp3'
+    const fireplaceSRC = '/static/sounds/fireplace.mp3'
+    const stormSRC = '/static/sounds/storm.mp3'
+    const citySRC = '/static/sounds/city.mp3'
+    const forestSRC = '/static/sounds/forest.mp3'
     
     return(
         <>

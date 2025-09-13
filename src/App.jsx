@@ -2,12 +2,11 @@ import './css/App.css'
 import Navbar from './components/navbar'
 import Clock from './components/clock'
 import RadioSelect from './components/radioselect'
-import { useState, createContext, StrictMode, useReducer, useRef, useEffect } from 'react'
+import { useState, createContext, useRef, useEffect } from 'react'
 import Radio from './components/radio'
 import Pomodoro from './components/pomodoro'
 import ToDoList from './components/todolist'
 import Mixer from './components/mixer'
-import ChangeWallpaper from './components/bottomnavbar'
 import BottomNavbar from './components/bottomnavbar'
 
 export const PanelContext = createContext();
@@ -54,12 +53,6 @@ function App() {
       videoRef.current?.play();
     }
   }, [pauseVideo])
-
-  addEventListener('mousemove',(e) => {
-    if (timerActive){
-      
-    }
-  });
 
   return (
     // <StrictMode>
