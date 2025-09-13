@@ -18,7 +18,7 @@ export const ToDoListContext = createContext();
 function App() {
   const [panelState, setPanelState] = useState({  // Context for the state of all panels in the website
     activepanel : null,
-    wallpaperSRC : '/src/assets/storerainnight.mp4',
+    wallpaperSRC : '/public/static/videos/storerainnight.mp4',
     radioselectpanel : 0, //1 = open but minimised, 2 = open and visible, 0 = closed
     mixerpanel : 0,
     pomodoropanel : 0,
