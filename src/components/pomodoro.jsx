@@ -91,7 +91,7 @@ function Settings({
                                 <button 
                     style={{padding:'0px'}}
                     onClick={() => {
-                    const alarm = new Audio('/src/sounds/alarm.mp3');
+                    const alarm = new Audio('\static\sounds\alarm.mp3');
                     alarm.volume = alarmVolume / 100
                     alarm.play()
                 }}>🔊</button>
