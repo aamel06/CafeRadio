@@ -112,7 +112,7 @@ function Timer({
     const [key, setKey] = useState(0);
     const timeMultiplier = 60000; //Default 60000
     const [startTime, setStartTime] = useState(Date.now() + (pomProps.work * timeMultiplier))
-    const alarm = new Audio('/src/sounds/alarm.mp3');
+    const alarm = new Audio('/static/sounds/alarm.mp3');
         alarm.volume = alarmVolume / 100;
     const timerRef = useRef(null);
     const [pauseText, setPauseText] = useState('Pause')
