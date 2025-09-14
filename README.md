@@ -1,12 +1,6 @@
-# React + Vite
+CafeRadio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CafeRadio is a productivity workspace webapp designed to be used alongside doing work. It includes features such as a music player, ambient sound mixer, to do list, pomodoro timer, clock as well as a selection of animated wallpapers.
+It is available at: https://cafe-radio.vercel.app/.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+This website is in active development and I plan on adding future features such as a notepad and calculator. I am also working on optimising the performance.
