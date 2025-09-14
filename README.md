@@ -1,4 +1,4 @@
-CafeRadio
+## CafeRadio
 
 CafeRadio is a productivity workspace webapp designed to be used alongside doing work. It includes features such as a music player, ambient sound mixer, to do list, pomodoro timer, clock as well as a selection of animated wallpapers.
 It is available at: https://cafe-radio.vercel.app/.
